@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vowel counter</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        background-image: linear-gradient(to right, red, pink);
+    }
+    .container{
+        width: 500px;
+        height: 450px;
+        background: #e8f0f7;
+        align-items: center;
+        border-radius: 5px;
+        position: relative;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+       
+    }
+
+    h1{
+        font-size: 4rem;
+        padding-top: 15px;
+        padding-bottom: 35px;
+        margin-top: 50px;
+
+    }
+    #input{
+        width: 300px;
+        height: 35px;
+        padding: 10px;
+        outline: none;
+        background-color: #fff;
+        border: none;
+        box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
+        font-size: 16px;
+        border-radius: 5px;
+    }
+    #button{
+        outline: none;
+        cursor: pointer;
+        padding: 10px;
+        margin-top: 60px;
+        width: 140px;
+        height: 50px;
+        background: #000;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 18px;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    #message{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #000;
+        height: 50px;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+
+</style>
+<body>
+    <div class="container">
+        <h1>vowel counter</h1>
+        <input type="text" name="text" id="input" placeholder="Enter text">
+        <button id="button">Calculate</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        var messagedisplay = document.querySelector('#message');
+        var button = document.querySelector('#button');
+        var counter = 0;
+        var input = document.querySelector('#input');
+
+        const removeAftertime = () =>{
+            location.reload();
+        }
+
+        button.onclick = () =>{
+            var input = document.querySelector('#input').value;
+            var split = input.split('');
+            input.value = "";
+
+
+            for(var i = 0; i < split.length; i++){
+                if(split[i] == 'a'|| split[i] == 'e' || split[i] == 'i' || split[i] == 'o' || split[i] == 'u' ){
+                    counter++;
+                }
+                if(counter >= 1){
+                    messagedisplay.textContent = `'${input}' has ${counter} vowels`
+                }
+                else{
+                    messagedisplay.textContent = `'${input}' has no vowels`
+                }
+                var timeout = setTimeout(removeAftertime, 5000);
+
+            }
+        }
+    </script>
+</body>
+</html>
